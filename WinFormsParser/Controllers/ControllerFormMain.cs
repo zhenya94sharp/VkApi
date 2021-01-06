@@ -62,7 +62,7 @@ namespace WinFormsParser
 
                 await api.AuthorizeAsync(new ApiAuthParams()
                 {
-                    AccessToken = "31f3be54127b0255a1ed07fffba1c69618e14270123d8ba517da0e2a564c53408b811d997780eeb82f734"
+                    AccessToken = api.Token
                 });
             /*}
             catch (Exception e)
@@ -73,7 +73,7 @@ namespace WinFormsParser
             MessageBox.Show($"Авторизация пройдена ваш токен {api.Token}");
         }
 
-        public VkCollection<User> GetCollectionFriends()
+        private VkCollection<User> GetCollectionFriends()
         {
             string data = "";
             try

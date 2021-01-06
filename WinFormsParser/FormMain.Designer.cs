@@ -41,16 +41,17 @@ namespace WinFormsParser
             // 
             // buttonGetToken
             // 
-            this.buttonGetToken.Location = new System.Drawing.Point(60, 304);
+            this.buttonGetToken.Location = new System.Drawing.Point(163, 265);
             this.buttonGetToken.Name = "buttonGetToken";
-            this.buttonGetToken.Size = new System.Drawing.Size(171, 35);
+            this.buttonGetToken.Size = new System.Drawing.Size(189, 56);
             this.buttonGetToken.TabIndex = 1;
-            this.buttonGetToken.Text = "Получить токен";
+            this.buttonGetToken.Text = "Получить токен на вход";
             this.buttonGetToken.UseVisualStyleBackColor = true;
             this.buttonGetToken.Click += new System.EventHandler(this.buttonGetToken_Click);
             // 
             // textBoxLogin
             // 
+            this.textBoxLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBoxLogin.Location = new System.Drawing.Point(15, 51);
             this.textBoxLogin.Multiline = true;
             this.textBoxLogin.Name = "textBoxLogin";
@@ -69,7 +70,7 @@ namespace WinFormsParser
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 98);
+            this.label2.Location = new System.Drawing.Point(12, 100);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(88, 13);
             this.label2.TabIndex = 5;
@@ -77,9 +78,11 @@ namespace WinFormsParser
             // 
             // textBoxPassword
             // 
-            this.textBoxPassword.Location = new System.Drawing.Point(15, 114);
+            this.textBoxPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBoxPassword.Location = new System.Drawing.Point(15, 128);
             this.textBoxPassword.Multiline = true;
             this.textBoxPassword.Name = "textBoxPassword";
+            this.textBoxPassword.PasswordChar = '*';
             this.textBoxPassword.Size = new System.Drawing.Size(232, 30);
             this.textBoxPassword.TabIndex = 4;
             // 
@@ -94,6 +97,7 @@ namespace WinFormsParser
             // 
             // textBoxIdApp
             // 
+            this.textBoxIdApp.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBoxIdApp.Location = new System.Drawing.Point(15, 211);
             this.textBoxIdApp.Multiline = true;
             this.textBoxIdApp.Name = "textBoxIdApp";
@@ -102,7 +106,7 @@ namespace WinFormsParser
             // 
             // buttonGetBirthday
             // 
-            this.buttonGetBirthday.Location = new System.Drawing.Point(327, 211);
+            this.buttonGetBirthday.Location = new System.Drawing.Point(299, 138);
             this.buttonGetBirthday.Name = "buttonGetBirthday";
             this.buttonGetBirthday.Size = new System.Drawing.Size(189, 55);
             this.buttonGetBirthday.TabIndex = 8;
@@ -114,7 +118,7 @@ namespace WinFormsParser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(552, 408);
+            this.ClientSize = new System.Drawing.Size(514, 354);
             this.Controls.Add(this.buttonGetBirthday);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.textBoxIdApp);
@@ -124,7 +128,7 @@ namespace WinFormsParser
             this.Controls.Add(this.textBoxLogin);
             this.Controls.Add(this.buttonGetToken);
             this.Name = "FormMain";
-            this.Text = "Form1";
+            this.Text = "Parser";
             this.Load += new System.EventHandler(this.FormMain_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

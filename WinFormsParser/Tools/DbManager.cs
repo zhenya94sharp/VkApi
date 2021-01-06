@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,29 +10,42 @@ namespace WinFormsParser.Tools
 {
     class DbManager
     {
-        private VkBirthdayEntities db = new VkBirthdayEntities();
         public void AddFriendsToDb(VkCollection<User> friends)
         {
-            try
+            using (VkBirthdayEntities db = new VkBirthdayEntities())
             {
-                foreach (var friend in friends)
+                try
                 {
-                    if (friend.BirthDate != null)
+                    foreach (var friend in friends)
                     {
-                        db.Friends.Add(new Friend()
+                        if (friend.BirthDate != null)
                         {
-                            name = friend.FirstName + " " + friend.LastName,
-                            date = friend.BirthDate
-                        });
-                        db.SaveChanges();
+                           Friend addFriend = db.Friends.FirstOrDefault(i => i.name == friend.FirstName + " " + friend.LastName);
 
+                           int index = friend.BirthDate.LastIndexOf('.');
+
+                           string date = friend.BirthDate.Substring(0, index);
+
+                           addFriend.date = date;
+
+
+                            /* db.Friends.Add(new Friend()
+                             {
+                                 name = friend.FirstName + " " + friend.LastName,
+                                 date = friend.BirthDate
+                             });
+                             */
+                            db.SaveChanges();
+                        }
                     }
                 }
+                catch (Exception e)
+                {
+                    MessageBox.Show("Ошибка при добавлении в Бд, проверьте соединение с базой\n" + e.Message);
+                }
             }
-            catch (Exception e)
-            {
-                MessageBox.Show("Ошибка при добавлении в Бд, проверьте соединение с базой\n" + e.Message);
-            }
+
+            
            
         }
     }

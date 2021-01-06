@@ -1,8 +1,8 @@
-import { tableWeather } from "./tableWeather.js";
+import { tableFriends } from "./tableFriends.js";
 
 let vm = new Vue({
-    el: "#tw",
+    el: "#tf",
     components: {
-        "table-weather": tableWeather
+        "table-friends": tableFriends
     }
 });
