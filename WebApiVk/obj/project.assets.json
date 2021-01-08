@@ -5802,11 +5802,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\G580\\source\\repos\\MyVkApi\\WebApiVk\\WebApiVk.csproj",
+      "projectUniqueName": "C:\\Users\\G580\\Documents\\GitHub\\VkApi\\WebApiVk\\WebApiVk.csproj",
       "projectName": "WebApiVk",
-      "projectPath": "C:\\Users\\G580\\source\\repos\\MyVkApi\\WebApiVk\\WebApiVk.csproj",
+      "projectPath": "C:\\Users\\G580\\Documents\\GitHub\\VkApi\\WebApiVk\\WebApiVk.csproj",
       "packagesPath": "C:\\Users\\G580\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\G580\\source\\repos\\MyVkApi\\WebApiVk\\obj\\",
+      "outputPath": "C:\\Users\\G580\\Documents\\GitHub\\VkApi\\WebApiVk\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\G580\\AppData\\Roaming\\NuGet\\NuGet.Config",

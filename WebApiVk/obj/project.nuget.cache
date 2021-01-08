@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "JTqRPs5X69U4nDcy9guEbDz9kGQplAFtACg60chlA20rns5GYDJ06oM24Ui1e9brDss6oj4iQpxgBjvDdaus2A==",
+  "dgSpecHash": "Enkv6J97ZgzaiTgV6faXuc2ILk9iwbVG1m6isRqaEmAr/i+mz4kd8MatluDgBjLpVJkyvJ8r1nd3pn6Ucxx+wg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\G580\\source\\repos\\MyVkApi\\WebApiVk\\WebApiVk.csproj",
+  "projectFilePath": "C:\\Users\\G580\\Documents\\GitHub\\VkApi\\WebApiVk\\WebApiVk.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\G580\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\G580\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",

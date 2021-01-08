@@ -5,9 +5,8 @@
       <PropertyRef Name="id" />
     </Key>
     <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="birthday" Type="DateTime" Nullable="false" Precision="0" />
-    <Property Name="idUser" Type="Int32" Nullable="false" />
   </EntityType>
   <EntityContainer Name="VkBirthdayEntities1" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Friends" EntityType="Self.Friend" />

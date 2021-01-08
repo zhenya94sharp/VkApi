@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="47d839ef759848ec92104aea6567d3f1" Name="Diagram1">
+      <Diagram DiagramId="943c46d7697449bf8b6051f6f735886c" Name="Diagram1">
         <EntityTypeShape EntityType="VkBirthdayModel.Friend" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
       </Diagram>
     </edmx:Diagrams>

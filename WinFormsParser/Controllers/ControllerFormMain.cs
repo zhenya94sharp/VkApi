@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using VkNet;
 using VkNet.Enums.Filters;
@@ -58,12 +54,14 @@ namespace WinFormsParser
                     Password = password,
                     ApplicationId = appId,
                     Settings = Settings.All
-                });*/
+                });
+                */
 
                 await api.AuthorizeAsync(new ApiAuthParams()
                 {
-                    AccessToken = api.Token
+                    AccessToken = "ad9b88cbbc5bb6cce826063247de6f5b31e3af9570c402d5a0281a49ce4495b45d001d2770c57378c56c0"
                 });
+
             /*}
             catch (Exception e)
             {
@@ -93,16 +91,15 @@ namespace WinFormsParser
             }
         }
 
+
         public void AddFriendsToDb()
         {
             DbManager dbManager = new DbManager();
 
             VkCollection<User> friends = GetCollectionFriends();
 
-            dbManager.AddFriendsToDb(friends);
+            dbManager.UpdateFriendsToDb(friends);
         }
-
-
 
 
     }

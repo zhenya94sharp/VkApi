@@ -5,9 +5,8 @@
       <PropertyRef Name="id" />
     </Key>
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="name" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="10" Nullable="false" />
     <Property Name="birthday" Type="date" Nullable="false" />
-    <Property Name="idUser" Type="int" Nullable="false" />
   </EntityType>
   <EntityContainer Name="Хранилище VkBirthdayModelContainer">
     <EntitySet Name="Friends" EntityType="Self.Friends" Schema="dbo" store:Type="Tables" />

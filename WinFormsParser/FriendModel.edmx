@@ -11,7 +11,8 @@
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="name" Type="nvarchar" MaxLength="30" Nullable="false" />
-          <Property Name="date" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="birthday" Type="date" Nullable="false" />
+          <Property Name="idUser" Type="int" Nullable="false" />
         </EntityType>
         <EntityContainer Name="Хранилище VkBirthdayModelContainer">
           <EntitySet Name="Friends" EntityType="Self.Friends" Schema="dbo" store:Type="Tables" />
@@ -27,9 +28,10 @@
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="date" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="birthday" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="idUser" Type="Int32" Nullable="false" />
         </EntityType>
-        <EntityContainer Name="VkBirthdayEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="VkBirthdayEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Friends" EntityType="Self.Friend" />
         </EntityContainer>
       </Schema>
@@ -37,13 +39,14 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище VkBirthdayModelContainer" CdmEntityContainer="VkBirthdayEntities">
+        <EntityContainerMapping StorageEntityContainer="Хранилище VkBirthdayModelContainer" CdmEntityContainer="VkBirthdayEntities1">
           <EntitySetMapping Name="Friends">
             <EntityTypeMapping TypeName="VkBirthdayModel.Friend">
               <MappingFragment StoreEntitySet="Friends">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="birthday" ColumnName="birthday" />
+                <ScalarProperty Name="idUser" ColumnName="idUser" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

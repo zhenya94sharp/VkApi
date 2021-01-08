@@ -16,6 +16,7 @@ namespace WinFormsParser
     {
         public int id { get; set; }
         public string name { get; set; }
-        public string date { get; set; }
+        public System.DateTime birthday { get; set; }
+        public int idUser { get; set; }
     }
 }

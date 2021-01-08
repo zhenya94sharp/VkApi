@@ -8,7 +8,7 @@ namespace WebApiVk.Controllers
 {
     public class VkController : Controller
     {
-        public IActionResult Index()
+        public IActionResult Get()
         {
             try
             {
@@ -24,6 +24,13 @@ namespace WebApiVk.Controllers
             {
                 return Conflict("Ошибка! Проверьте соединение " + e.Message);
             }
+        }
+
+        public IActionResult Post()
+        {
+            
+
+            return Ok();
         }
 
     }
