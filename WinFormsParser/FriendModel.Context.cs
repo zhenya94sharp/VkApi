@@ -13,10 +13,10 @@ namespace WinFormsParser
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class VkBirthdayEntities1 : DbContext
+    public partial class VkBirthdayEntities : DbContext
     {
-        public VkBirthdayEntities1()
-            : base("name=VkBirthdayEntities1")
+        public VkBirthdayEntities()
+            : base("name=VkBirthdayEntities")
         {
         }
     

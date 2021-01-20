@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\G580\\Documents\\GitHub\\VkApi\\WebApiVk\\WebApiVk.csproj": {}
+    "C:\\Users\\G580\\Documents\\GitHub\\VkApi\\VkClassLibrary\\VkClassLibrary.csproj": {}
   },
   "projects": {
-    "C:\\Users\\G580\\Documents\\GitHub\\VkApi\\WebApiVk\\WebApiVk.csproj": {
+    "C:\\Users\\G580\\Documents\\GitHub\\VkApi\\VkClassLibrary\\VkClassLibrary.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\G580\\Documents\\GitHub\\VkApi\\WebApiVk\\WebApiVk.csproj",
-        "projectName": "WebApiVk",
-        "projectPath": "C:\\Users\\G580\\Documents\\GitHub\\VkApi\\WebApiVk\\WebApiVk.csproj",
+        "projectUniqueName": "C:\\Users\\G580\\Documents\\GitHub\\VkApi\\VkClassLibrary\\VkClassLibrary.csproj",
+        "projectName": "VkClassLibrary",
+        "projectPath": "C:\\Users\\G580\\Documents\\GitHub\\VkApi\\VkClassLibrary\\VkClassLibrary.csproj",
         "packagesPath": "C:\\Users\\G580\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\G580\\Documents\\GitHub\\VkApi\\WebApiVk\\obj\\",
+        "outputPath": "C:\\Users\\G580\\Documents\\GitHub\\VkApi\\VkClassLibrary\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\G580\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -39,26 +39,6 @@
       "frameworks": {
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
-          "dependencies": {
-            "Microsoft.EntityFrameworkCore.SqlServer": {
-              "target": "Package",
-              "version": "[5.0.1, )"
-            },
-            "Microsoft.EntityFrameworkCore.Tools": {
-              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
-              "suppressParent": "All",
-              "target": "Package",
-              "version": "[5.0.1, )"
-            },
-            "VkNet": {
-              "target": "Package",
-              "version": "[1.57.0, )"
-            },
-            "VkNet.AudioBypassService": {
-              "target": "Package",
-              "version": "[1.7.0, )"
-            }
-          },
           "imports": [
             "net461",
             "net462",
@@ -70,9 +50,6 @@
           "assetTargetFallback": true,
           "warn": true,
           "frameworkReferences": {
-            "Microsoft.AspNetCore.App": {
-              "privateAssets": "none"
-            },
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }

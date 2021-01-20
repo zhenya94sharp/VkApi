@@ -24,7 +24,7 @@ namespace WinFormsParser
 
         public async void Autorize()
         {
-           /* if (form.textBoxLogin.Text == "")
+           if (form.textBoxLogin.Text == "")
             {
                 MessageBox.Show("Заполните все поля!");
                 return;
@@ -55,19 +55,18 @@ namespace WinFormsParser
                     ApplicationId = appId,
                     Settings = Settings.All
                 });
-                */
-
                 await api.AuthorizeAsync(new ApiAuthParams()
                 {
-                    AccessToken = "ad9b88cbbc5bb6cce826063247de6f5b31e3af9570c402d5a0281a49ce4495b45d001d2770c57378c56c0"
+                    AccessToken = api.Token
                 });
 
-            /*}
+                
+            }
             catch (Exception e)
             {
                 MessageBox.Show("Не удалось подключиться, проверьте правильность введённых данных\n" + e.Message);
                 return;
-            }*/
+            }
             MessageBox.Show($"Авторизация пройдена ваш токен {api.Token}");
         }
 
@@ -90,7 +89,6 @@ namespace WinFormsParser
                 return null;
             }
         }
-
 
         public void AddFriendsToDb()
         {

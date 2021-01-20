@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,7 +14,7 @@ namespace WinFormsParser.Tools
     {
         public void UpdateFriendsToDb(VkCollection<User> friends)
         {
-            using (VkBirthdayEntities1 db = new VkBirthdayEntities1())
+            using (VkBirthdayEntities db = new VkBirthdayEntities())
             {
                 try
                 {
@@ -23,24 +24,34 @@ namespace WinFormsParser.Tools
                     {
                         if (friend.BirthDate != null)
                         {
-                             id = db.Friends.FirstOrDefault(i => i.id == id).id;
-                             Friend updateFriend = db.Friends.FirstOrDefault(i => i.id == id);
+                            Friend updateFriend = db.Friends.FirstOrDefault(i => i.id == id);
 
-                             DateTime birthday = CreateDateTime(friend);
+                            DateTime birthday = CreateDateTime(friend);
 
                              string name = friend.FirstName + " " + friend.LastName;
 
-                             //если данные не совпадают то обновляем
-                             if (updateFriend.birthday != birthday || updateFriend.name != name)
-                             {
-                                 updateFriend.idUser = (int)(friend.Id);
-                                 updateFriend.birthday = birthday;
-                                 updateFriend.name = name;
-                                 db.SaveChanges();
-                             }
-
-                             id++;
-
+                            if (updateFriend == null)
+                            {
+                                db.Friends.Add(new Friend()
+                                {
+                                    idUser = (int)friend.Id,
+                                    name = name,
+                                    birthday = birthday
+                                });
+                                db.SaveChanges();
+                            }
+                            else
+                            { //если данные не совпадают то обновляем
+                                if (updateFriend.birthday != birthday || updateFriend.name != name)
+                                {
+                                    updateFriend.idUser = (int)(friend.Id);
+                                    updateFriend.birthday = birthday;
+                                    updateFriend.name = name;
+                                    db.SaveChanges();
+                                }
+                                id++;
+                            }
+                            
                            /* //первое добавление
 
                             db.Friends.Add(new Friend()
@@ -49,12 +60,8 @@ namespace WinFormsParser.Tools
                                 name = friend.FirstName + " " + friend.LastName,
                                 birthday = CreateDateTime(friend)
                             });*/
-
-                            db.SaveChanges();
                         }
-                        
                     }
-
                     MessageBox.Show("Данные успешно добавлены в Бд");
                 }
                 catch (Exception e)
@@ -64,7 +71,7 @@ namespace WinFormsParser.Tools
             }
         }
 
-
+        // добавляю дню рождению текущий год для дальнейшего сравнения и возвращаю в нужном формате
         private DateTime CreateDateTime(User friend)
         {
             int indexSubstring;
@@ -82,14 +89,10 @@ namespace WinFormsParser.Tools
 
             int year = int.Parse(DateTime.Today.ToString().Substring(indexSubstring+1, 4));
 
-
             DateTime date = new DateTime(year, int.Parse(dayMounth[1]), int.Parse(dayMounth[0]));
 
             return date;
         }
-
-
-
     }
 }
 

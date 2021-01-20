@@ -8,11 +8,23 @@ export let tableFriends = {
     data(){
         return{
             friendsList: [],
-            date: new Date(Date.now())
+            today: new Date(Date.now()),
+            log: '1',
+            pass:'2'
         }
     },
     template:`
     <div> 
+        <div>
+            <label for="inputEmail">Email</label>
+            <input type="text" v-model="log"  id="inputEmail" aria-describedby="emailHelp" placeholder="Введите логин">
+ 
+            <small id="emailHelp" class="form-text text-muted">Ваши данные никогда не будут использованы третими лицами.</small>
+
+            <label for="inputPassword">Пароль</label>
+            <input type="password" v-model="pass" id="inputPassword" placeholder="Введите пароль">
+          </div>
+
         <button class="btn btn-danger" v-on:click="friendsLoad">Загрузить дни рождения друзей</button>
 
         <div v-if="friendsList!=0" class="list-group">
@@ -25,19 +37,19 @@ export let tableFriends = {
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="friend in friendsList">
+                <tr v-for="friend in friendsList" v-if="today-new Date(friend.birthday)>-1000*3600*24*30 && today-new Date(friend.birthday)<1000*3600*24">
                 <td>{{friend.name}}</td>
                 <td>{{convertDate(friend.birthday)}}</td>
-                <td>{{friend.id}}</td>
-                <td v-if="date-new Date(friend.birthday)<86400000&&date-new Date(friend.birthday)>-86400000">
-                <button class="btn btn-danger" v-on:click="">Отправить поздравление</button>
+                <td>{{friend.idUser}}</td>
+                <td v-if="today-new Date(friend.birthday)>0 && today-new Date(friend.birthday)<1000*3600*24">
+                <button class="btn btn-danger" v-on:click="sendMessage($event, friend.idUser)">Отправить поздравление</button>
                 <td>
                 </tr>
             </tbody> 
         </div>
     </div>   
     `,
-    methods:{
+    methods: {
         friendsLoad: async function() {
             let response = await fetch("https://localhost:44335/Vk/Get",
                 {
@@ -46,20 +58,40 @@ export let tableFriends = {
                         accept: 'application/json',
                         'Content-Type': 'application/json;charset=utf-8'
                     }
-                }
-            );
+                });
+
             if (response.ok == true) {
-                this.friendsList = await response.json()
+                this.friendsList = await response.json();
                 alert("Получены данные о друзьях");
             } else {
-                alert("При загрузке данных произошла ошибка " + response.status)
+                alert("При загрузке данных произошла ошибка " + response.status);
             }
         },
         convertDate: function(date) {
             let birthday = new Date(date).toLocaleString("ru", options);
             return birthday;
-        }
+        },
+        sendMessage: async function (event, idUser) {
+            let json = {
+                id: idUser,
+                password: this.pass,
+                login: this.log
+            };
+            let response = await fetch("https://localhost:44335/Vk/Post",
+                {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json;charset=utf-8'
+                    },
+                    body: JSON.stringify(json)
+        });
+            if (response.ok == true) {
+                alert("Поздравление отправлено"+this.pass+this.log);
+            } else {
+                alert("При загрузке данных произошла ошибка " + response.status);
+            }
 
+        }
     }
 }
 
