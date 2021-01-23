@@ -15,9 +15,12 @@ using VkNet.Model.RequestParams;
 
 namespace WebApiVk.Controllers
 {
+    [ApiController]
+    [Route("api/[controller]")]
     public class VkController : Controller
     {
-        public IActionResult Get()
+        [HttpGet]
+        public ActionResult Get()
         {
             try
             {
@@ -34,37 +37,39 @@ namespace WebApiVk.Controllers
             }
         }
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody] string json)
+        public ActionResult Post([FromBody] DataAccount account)
         {
-            object data = JsonConvert.DeserializeObject(json);
             
-            return Ok();
-            /*
+            try
+            {
+
             ServiceCollection services = new ServiceCollection();
 
             services.AddAudioBypass();
 
             VkApi api = new VkApi(services);
 
-
-
             // Авторизируемся для получения токена валидного для вызова методов Audio / Messages
               api.Authorize(new ApiAuthParams
               {
-                  Login = login,
-                  Password = pass
+                  Login = account.Login,
+                  Password = account.Password
               });
   
               api.Messages.Send(new MessagesSendParams
               {
                   RandomId = 123,
-                  UserId = id,
+                  UserId = account.Id,
                   Message = "Желаю счастья в личной жизни.Пух"
               });
   
               return Ok();
-          }*/
 
+            }
+            catch (Exception e)
+            {
+                return Conflict(e.Message);
+            }
         }
     }
 }

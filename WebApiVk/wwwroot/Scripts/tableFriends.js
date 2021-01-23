@@ -43,15 +43,16 @@ export let tableFriends = {
                 <td>{{friend.idUser}}</td>
                 <td v-if="today-new Date(friend.birthday)>0 && today-new Date(friend.birthday)<1000*3600*24">
                 <button class="btn btn-danger" v-on:click="sendMessage($event, friend.idUser)">Отправить поздравление</button>
-                <td>
+                </td>
                 </tr>
             </tbody> 
+        </table>
         </div>
     </div>   
     `,
     methods: {
         friendsLoad: async function() {
-            let response = await fetch("https://localhost:44335/Vk/Get",
+            let response = await fetch("https://localhost:44335/api/Vk",
                 {
                     method: 'GET',
                     headers: {
@@ -77,14 +78,20 @@ export let tableFriends = {
                 password: this.pass,
                 login: this.log
             };
-            let response = await fetch("https://localhost:44335/Vk/Post",
+            //console.dir(json);
+            let jsonString = JSON.stringify(json);
+
+            console.dir(jsonString);
+
+            let response = await fetch("https://localhost:44335/api/Vk",
                 {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json;charset=utf-8'
                     },
-                    body: JSON.stringify(json)
-        });
+                    body: jsonString
+                });
+
             if (response.ok == true) {
                 alert("Поздравление отправлено"+this.pass+this.log);
             } else {

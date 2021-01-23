@@ -131,6 +131,7 @@ C:\Users\G580\Documents\GitHub\VkApi\WebApiVk\bin\Debug\netcoreapp3.1\runtimes\u
 C:\Users\G580\Documents\GitHub\VkApi\WebApiVk\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Private.ServiceModel.dll
 C:\Users\G580\Documents\GitHub\VkApi\WebApiVk\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
 C:\Users\G580\Documents\GitHub\VkApi\WebApiVk\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\G580\Documents\GitHub\VkApi\WebApiVk\obj\Debug\netcoreapp3.1\WebApiVk.csprojAssemblyReference.cache
 C:\Users\G580\Documents\GitHub\VkApi\WebApiVk\obj\Debug\netcoreapp3.1\WebApiVk.AssemblyInfoInputs.cache
 C:\Users\G580\Documents\GitHub\VkApi\WebApiVk\obj\Debug\netcoreapp3.1\WebApiVk.AssemblyInfo.cs
 C:\Users\G580\Documents\GitHub\VkApi\WebApiVk\obj\Debug\netcoreapp3.1\WebApiVk.csproj.CoreCompileInputs.cache
@@ -152,4 +153,3 @@ C:\Users\G580\Documents\GitHub\VkApi\WebApiVk\obj\Debug\netcoreapp3.1\WebApiVk.c
 C:\Users\G580\Documents\GitHub\VkApi\WebApiVk\obj\Debug\netcoreapp3.1\WebApiVk.dll
 C:\Users\G580\Documents\GitHub\VkApi\WebApiVk\obj\Debug\netcoreapp3.1\WebApiVk.pdb
 C:\Users\G580\Documents\GitHub\VkApi\WebApiVk\obj\Debug\netcoreapp3.1\WebApiVk.genruntimeconfig.cache
-C:\Users\G580\Documents\GitHub\VkApi\WebApiVk\obj\Debug\netcoreapp3.1\WebApiVk.csprojAssemblyReference.cache
