@@ -52,7 +52,7 @@ namespace WebApiVk.Controllers
             }
         }
         [HttpPost]
-        public ActionResult Post([FromBody] DataForMessage forMessage)
+        public ActionResult Post([FromBody] DataForMessage data)
         {
 
             try
@@ -66,14 +66,14 @@ namespace WebApiVk.Controllers
                 // Авторизируемся для получения токена валидного для вызова методов Audio / Messages
                 api.Authorize(new ApiAuthParams
                 {
-                    Login = forMessage.Login,
-                    Password = forMessage.Password
+                    Login = data.Login,
+                    Password = data.Password
                 });
 
                 api.Messages.Send(new MessagesSendParams
                 {
                     RandomId = 123,
-                    UserId = forMessage.Id,
+                    UserId = data.Id,
                     Message = "Желаю счастья в личной жизни.Пух"
                 });
 

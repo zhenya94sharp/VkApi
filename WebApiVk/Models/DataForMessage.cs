@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace WebApiVk.Models
 {
-    public class DataAccount
+    public class DataForMessage
     {
         public int Id { get; set; }
         public string Login { get; set; }
