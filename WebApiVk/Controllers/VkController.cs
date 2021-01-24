@@ -26,9 +26,18 @@ namespace WebApiVk.Controllers
             {
                 using (FriendsContext db = new FriendsContext())
                 {
-                    var friends = db.Friends.ToList();
+                    List<Friend> allFriends = db.Friends.ToList();
+                    List<Friend> thisMonthFriends = new List<Friend>();
 
-                    return Ok(friends);
+                    foreach (var friend in allFriends)
+                    {
+                        if (friend.Birthday.Month == DateTime.Now.Month)
+                        {
+                            thisMonthFriends.Add(friend);
+                        }
+                    }
+
+                    return Ok(thisMonthFriends);
                 }
             }
             catch (Exception e)

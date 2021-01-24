@@ -9,14 +9,15 @@ export let tableFriends = {
         return{
             friendsList: [],
             today: new Date(Date.now()),
-            log: '1',
-            pass:'2'
+            log: '',
+            pass:''
         }
     },
     template:`
     <div> 
         <div>
-            <label for="inputEmail">Email</label>
+            <h3>Для отправки поздравления введите Login и пароль</h3>
+            <label for="inputEmail">Login</label>
             <input type="text" v-model="log"  id="inputEmail" aria-describedby="emailHelp" placeholder="Введите логин">
  
             <small id="emailHelp" class="form-text text-muted">Ваши данные никогда не будут использованы третими лицами.</small>
@@ -37,7 +38,7 @@ export let tableFriends = {
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="friend in friendsList" v-if="today-new Date(friend.birthday)>-1000*3600*24*30 && today-new Date(friend.birthday)<1000*3600*24">
+                <tr v-for="friend in friendsList">
                 <td>{{friend.name}}</td>
                 <td>{{convertDate(friend.birthday)}}</td>
                 <td>{{friend.idUser}}</td>
