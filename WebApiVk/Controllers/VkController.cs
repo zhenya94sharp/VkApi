@@ -26,7 +26,13 @@ namespace WebApiVk.Controllers
             {
                 using (FriendsContext db = new FriendsContext())
                 {
-                    List<Friend> allFriends = db.Friends.ToList();
+                    List<Friend> allFriends = null;
+
+                    if (allFriends == null)
+                    {
+                        allFriends = db.Friends.ToList();
+                    }
+                   
                     List<Friend> thisMonthFriends = new List<Friend>();
 
                     foreach (var friend in allFriends)
@@ -46,33 +52,32 @@ namespace WebApiVk.Controllers
             }
         }
         [HttpPost]
-        public ActionResult Post([FromBody] DataAccount account)
+        public ActionResult Post([FromBody] DataForMessage forMessage)
         {
-            
+
             try
             {
+                ServiceCollection services = new ServiceCollection();
 
-            ServiceCollection services = new ServiceCollection();
+                services.AddAudioBypass();
 
-            services.AddAudioBypass();
+                VkApi api = new VkApi(services);
 
-            VkApi api = new VkApi(services);
+                // Авторизируемся для получения токена валидного для вызова методов Audio / Messages
+                api.Authorize(new ApiAuthParams
+                {
+                    Login = forMessage.Login,
+                    Password = forMessage.Password
+                });
 
-            // Авторизируемся для получения токена валидного для вызова методов Audio / Messages
-              api.Authorize(new ApiAuthParams
-              {
-                  Login = account.Login,
-                  Password = account.Password
-              });
-  
-              api.Messages.Send(new MessagesSendParams
-              {
-                  RandomId = 123,
-                  UserId = account.Id,
-                  Message = "Желаю счастья в личной жизни.Пух"
-              });
-  
-              return Ok();
+                api.Messages.Send(new MessagesSendParams
+                {
+                    RandomId = 123,
+                    UserId = forMessage.Id,
+                    Message = "Желаю счастья в личной жизни.Пух"
+                });
+
+                return Ok();
 
             }
             catch (Exception e)
