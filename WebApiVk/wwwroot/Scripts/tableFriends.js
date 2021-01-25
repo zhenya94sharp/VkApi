@@ -44,7 +44,7 @@ export let tableFriends = {
        </div>
     </div>
 
-        <button class="btn btn-danger" v-on:click="friendsLoad">Загрузить дни рождения друзей</button>
+        <button class="btn btn-danger" v-on:click="friendsLoad()">Загрузить дни рождения друзей</button>
 
         <div v-if="friendsList!=0" class="list-group">
             <table class='table table-striped table-dark'>
@@ -61,7 +61,7 @@ export let tableFriends = {
                 <td>{{convertDate(friend.birthday)}}</td>
                 <td>{{friend.idUser}}</td>
                 <td v-if="today-new Date(friend.birthday)>0 && today-new Date(friend.birthday)<1000*3600*24">
-                <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#gridSystemModal">Отправить поздравление</button>
+                <button type="button" class="btn btn-primary btn-lg" v-on:click="SaveId(friend.idUser)" data-toggle="modal" data-target="#gridSystemModal">Отправить поздравление</button>
                 </td>
                 </tr>
             </tbody> 
@@ -118,11 +118,14 @@ export let tableFriends = {
                 alert("При загрузке данных произошла ошибка " + response.status);
             }
 
+        },
+
+        SaveId: function(idUser) {
+            let saveId = 0;
+            saveId = idUser;
+            this.id = saveId;
         }
-    },
-    saveId: function (idUser) {
-        let data = idUser;
-        this.id = data;
+
     }
 }
 

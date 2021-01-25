@@ -78,7 +78,7 @@ namespace WinFormsParser
                 VkCollection<User> friends = api.Friends.Get(new FriendsGetParams()
                 {
                     Order = FriendsOrder.Name,
-                    Fields = ProfileFields.BirthDate,
+                    Fields = ProfileFields.BirthDate
                 });
                 return friends;
             }
