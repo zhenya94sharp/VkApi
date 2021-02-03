@@ -19,6 +19,7 @@ namespace WebApiVk.Controllers
     [Route("api/[controller]")]
     public class VkController : Controller
     {
+        private static List<Friend> cacheList = null;
         [HttpGet]
         public ActionResult Get()
         {
@@ -26,16 +27,14 @@ namespace WebApiVk.Controllers
             {
                 using (FriendsContext db = new FriendsContext())
                 {
-                    List<Friend> allFriends = null;
-
-                    if (allFriends == null)
+                    if (cacheList==null)
                     {
-                        allFriends = db.Friends.ToList();
+                        cacheList = db.Friends.ToList();
                     }
-                   
+
                     List<Friend> thisMonthFriends = new List<Friend>();
 
-                    foreach (var friend in allFriends)
+                    foreach (var friend in cacheList)
                     {
                         if (friend.Birthday.Month == DateTime.Now.Month)
                         {
@@ -54,7 +53,6 @@ namespace WebApiVk.Controllers
         [HttpPost]
         public ActionResult Post([FromBody] DataForMessage data)
         {
-
             try
             {
                 ServiceCollection services = new ServiceCollection();
@@ -74,7 +72,7 @@ namespace WebApiVk.Controllers
                 {
                     RandomId = 123,
                     UserId = data.Id,
-                    Message = "Желаю счастья в личной жизни.Пух"
+                    Message = data.Message
                 });
 
                 return Ok();

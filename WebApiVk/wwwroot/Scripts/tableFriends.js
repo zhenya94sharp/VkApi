@@ -10,21 +10,39 @@ export let tableFriends = {
             friendsList: [],
             today: new Date(Date.now()),
             log: '',
-            pass:''
+            pass: '',
+            mes: '',
+            id:0
         }
     },
     template:`
     <div> 
-        <div>
-            <h3>Для отправки поздравления введите Login и пароль</h3>
-            <label for="inputEmail">Login</label>
-            <input type="text" v-model="log"  id="inputEmail" aria-describedby="emailHelp" placeholder="Введите логин">
- 
-            <small id="emailHelp" class="form-text text-muted">Ваши данные никогда не будут использованы третими лицами.</small>
-
-            <label for="inputPassword">Пароль</label>
-            <input type="password" v-model="pass" id="inputPassword" placeholder="Введите пароль">
+    <div id="gridSystemModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="gridModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="gridModalLabel">Для отправки поздравления введите текст, логин и пароль</h4>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid bd-example-row">
+                    <label for="inputMessage">Текст поздравления</label>
+                    <textarea class="form-control" v-model="mes" id="inputMessage" rows="3">Введите текст поздравления</textarea>
+                    <br>
+                    <label for="inputLogin">Логин</label>
+                    <input class="form-control" type="text" v-model="log"  id="inputLogin" aria-describedby="loginHelp" placeholder="Введите логин">
+                    <small id="loginHelp" class="form-text text-muted">Ваши данные никогда не будут использованы третими лицами.</small>
+                    <label for="inputPassword">Пароль</label>
+                    <input class="form-control" type="password" v-model="pass" id="inputPassword" placeholder="Введите пароль">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Отмена</button>
+                <button class="btn btn-danger" v-on:click="sendMessage()">Отправить сообщение</button>
+            </div>
           </div>
+       </div>
+    </div>
 
         <button class="btn btn-danger" v-on:click="friendsLoad">Загрузить дни рождения друзей</button>
 
@@ -43,7 +61,7 @@ export let tableFriends = {
                 <td>{{convertDate(friend.birthday)}}</td>
                 <td>{{friend.idUser}}</td>
                 <td v-if="today-new Date(friend.birthday)>0 && today-new Date(friend.birthday)<1000*3600*24">
-                <button class="btn btn-danger" v-on:click="sendMessage($event, friend.idUser)">Отправить поздравление</button>
+                <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#gridSystemModal">Отправить поздравление</button>
                 </td>
                 </tr>
             </tbody> 
@@ -73,13 +91,14 @@ export let tableFriends = {
             let birthday = new Date(date).toLocaleString("ru", options);
             return birthday;
         },
-        sendMessage: async function (event, idUser) {
+        sendMessage: async function () {
             let json = {
-                id: idUser,
+                id: this.id,
                 password: this.pass,
-                login: this.log
+                login: this.log,
+                message:this.mes
             };
-            //console.dir(json);
+
             let jsonString = JSON.stringify(json);
 
             console.dir(jsonString);
@@ -100,6 +119,10 @@ export let tableFriends = {
             }
 
         }
+    },
+    saveId: function (idUser) {
+        let data = idUser;
+        this.id = data;
     }
 }
 

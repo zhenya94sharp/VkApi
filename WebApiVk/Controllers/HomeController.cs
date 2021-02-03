@@ -12,19 +12,19 @@ namespace WebApiVk.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
-        {
-            _logger = logger;
-        }
-        public IActionResult Index()
+        public ActionResult Index()
         {
 
             return View();
         }
 
-        public IActionResult Error()
+        public ActionResult Authorize()
+        {
+
+            return View();
+        }
+
+        public ActionResult Error()
         {
 
             return View();
