@@ -2,7 +2,7 @@
 
 **Parser**
 ---
->Парсит всех ваших друзей из Вк. Добавляет в MSSQL с помощью EF Core.
+>Парсит всех ваших друзей из Вк. Добавляет в MSSQL с помощью Entity Framework.
 <img src="parser.png">
 
 **WebApi**
